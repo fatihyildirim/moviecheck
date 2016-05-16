@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import ENV from 'api-front/config/environment';
+import ENV from 'client/config/environment';
 
 
 export default DS.RESTAdapter.extend({
