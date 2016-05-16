@@ -2,7 +2,12 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'client',
+    host: "http://127.0.0.1:8000",
+    contentSecurityPolicy: {
+      'connect-src': "'self' http://127.0.0.1:8000"
+    },
+
+    modulePrefix: 'api-front',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
