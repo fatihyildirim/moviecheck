@@ -45,6 +45,18 @@ export default Ember.Component.extend({
         self.get('movies').removeObject(movie);
 				movie.destroyRecord();
 			});
+    },
+    movieCheck(value){
+      let self = this;
+      let status = value.target.checked;
+      let checkId = value.target.id;
+
+      self.get('store').findRecord('movie', checkId).then(function(movie) {
+				movie.set('status', status);
+				movie.save().then(function() {
+          self.get('movies').removeObject(movie);
+        });
+			});
     }
   }
 });
