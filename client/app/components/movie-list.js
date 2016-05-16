@@ -14,4 +14,29 @@ export default Ember.Component.extend({
       });
     });
   },
+  actions: {
+    editMovie(name, year, runtime, director, id) {
+      this.set('name', name);
+      this.set('year', year);
+      this.set('runtime', runtime);
+      this.set('director', director);
+      this.set('id', id);
+      this.set('formOpen', true);
+    },
+    cancelForm() {
+      this.set('formOpen', false);
+    },
+    saveForm(movie) {
+      let self = this;
+      this.set('formOpen', false);
+
+      this.get('store').findRecord('movie', movie.get('id')).then(function(newMovie) {
+				newMovie.set('name', self.get('name'));
+				newMovie.set('year', self.get('year'));
+				newMovie.set('runtime', self.get('runtime'));
+				newMovie.set('director', self.get('director'));
+				newMovie.save();
+			});
+    }
+  }
 });

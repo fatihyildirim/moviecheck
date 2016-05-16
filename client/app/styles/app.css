@@ -1,3 +1,16 @@
 .ember-view .form-control{
 	width: 60%
 }
+.edit-form {
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    width: 350px;
+    z-index: 99999999;
+}
+.fa{
+    cursor: pointer;
+}
+.left-box, .right-box{
+    min-height: 500px;
+}

@@ -1,8 +1,32 @@
 {{#each movies as |movie|}}
+{{#if formOpen}}
+	<div class="edit-form">
+		<div class="form-group">
+			<label for="name">Name</label>
+			{{input value=name class="form-control"}}
+		</div>
+		<div class="form-group">
+			<label for="year">Year</label>
+			{{input value=year class="form-control"}}
+		</div>
+		<div class="form-group">
+			<label for="runtime">Runtime</label>
+			{{input value=runtime class="form-control"}}
+		</div>
+		<div class="form-group">
+			<label for="director">Director</label>
+			{{input value=director class="form-control"}}
+		</div>
+		<button class="btn primary-btn" {{ action 'saveForm' movie}}>Save</button>
+		<button class="btn danger-btn" {{ action 'cancelForm' }}>Cancel</button>
+	</div>
+{{else}}
 
+{{/if}}
 <div class="col-md-12">
 	<p>
 		{{#link-to 'movies.detail' movie}}{{movie.name}}{{/link-to}}
+		<i {{action "editMovie" movie.name movie.year movie.runtime movie.director movie.id}} class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	</p>
 </div>
 
