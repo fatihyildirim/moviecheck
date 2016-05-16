@@ -27,6 +27,7 @@
 	<p>
 		{{#link-to 'movies.detail' movie}}{{movie.name}}{{/link-to}}
 		<i {{action "editMovie" movie.name movie.year movie.runtime movie.director movie.id}} class="fa fa-pencil-square-o" aria-hidden="true"></i>
+		<i class="fa fa-times" aria-hidden="true" {{action "deleteMovie" movie.id}}></i>
 	</p>
 </div>
 

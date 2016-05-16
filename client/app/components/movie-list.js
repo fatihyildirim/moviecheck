@@ -37,6 +37,14 @@ export default Ember.Component.extend({
 				newMovie.set('director', self.get('director'));
 				newMovie.save();
 			});
+    },
+    deleteMovie(id) {
+      let self = this;
+      this.set('id', id);
+      this.get('store').findRecord('movie', self.get('id')).then(function(movie) {
+        self.get('movies').removeObject(movie);
+				movie.destroyRecord();
+			});
     }
   }
 });
