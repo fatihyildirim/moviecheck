@@ -1,3 +1,19 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 bg-warning left-box">
+			<div class="container">
+				<h2>Ember & Django</h2>
+				<ul class="list-unstyled">
+					<li>{{#link-to 'movies'}}Movies{{/link-to}}</li>
+				</ul>
 
-{{outlet}}
+			</div>
+		</div>
+		<div class="col-md-8 bg-danger right-box">
+			<div class="container">
+				{{outlet}}
+				<br />
+			</div>
+		</div>
+	</div>
+</div>
