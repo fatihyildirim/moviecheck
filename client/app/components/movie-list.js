@@ -15,16 +15,17 @@ export default Ember.Component.extend({
     });
   },
   isFilter: false,
+  ordering: [],
   actions: {
     order(type) {
       let self = this;
-      if (self.get('isFilter')) {
-        self.set('isFilter', false);
-        type = '';
+      if (self.get('ordering').indexOf(type) >= 0) {
+        self.get('ordering').splice(self.get('ordering').indexOf(type), 1);
       } else {
-        self.set('isFilter', true);
+        self.get('ordering').push(type);
       }
-      return self.get('store').query('movie', {ordering: type}).then(function(movies) {
+
+      return self.get('store').query('movie', {ordering: self.get('ordering').join(",")}).then(function(movies) {
         self.set('movies', []);
         movies.map(item => {
           if (!item.get('status')) {
