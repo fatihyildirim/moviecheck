@@ -14,7 +14,25 @@ export default Ember.Component.extend({
       });
     });
   },
+  isFilter: false,
   actions: {
+    order(type) {
+      let self = this;
+      if (self.get('isFilter')) {
+        self.set('isFilter', false);
+        type = '';
+      } else {
+        self.set('isFilter', true);
+      }
+      return self.get('store').query('movie', {ordering: type}).then(function(movies) {
+        self.set('movies', []);
+        movies.map(item => {
+          if (!item.get('status')) {
+            self.get('movies').pushObject(item);
+          }
+        });
+      });
+    },
     editMovie(name, year, runtime, director, id) {
       this.set('name', name);
       this.set('year', year);
