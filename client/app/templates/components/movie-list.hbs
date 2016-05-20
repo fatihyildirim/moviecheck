@@ -4,6 +4,11 @@
 			<i class="fa fa-sort" {{action 'order' 'name'}} aria-hidden="true">Name</i>
 			<i class="fa fa-sort" {{action 'order' 'year'}} aria-hidden="true">Year</i>
 		</div>
+		<div class="col-md-10">
+			<div class="form-group">
+				{{input type="text" class="form-control" key-up="search" value=value}}
+			</div>
+		</div>
 	</div>
 </div>
 {{#each movies as |movie|}}
