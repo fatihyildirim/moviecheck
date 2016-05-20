@@ -14,7 +14,6 @@ export default Ember.Component.extend({
       });
     });
   },
-  queryLength: false,
   ordering: [],
   actions: {
     order(type) {
