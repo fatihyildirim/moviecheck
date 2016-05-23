@@ -35,26 +35,24 @@ export default Ember.Component.extend({
     },
     search(value) {
       let self = this;
-      if (typeof(value) !== 'undefined' && value.indexOf(' ') < 0) {
-        if (value === '') {
-          return self.get('store').findAll('movie').then(function(movies) {
-            self.set('movies', []);
-            movies.map(item => {
-              if (item.get('status')) {
-                self.get('movies').pushObject(item);
-              }
-            });
+      if (value.trim().length > 0) {
+        return self.get('store').query('movie', {search: value}).then(function(movies) {
+          self.set('movies', []);
+          movies.map(item => {
+            if (item.get('status')) {
+              self.get('movies').pushObject(item);
+            }
           });
-        } else{
-          return self.get('store').query('movie', {search: value}).then(function(movies) {
-            self.set('movies', []);
-            movies.map(item => {
-              if (item.get('status')) {
-                self.get('movies').pushObject(item);
-              }
-            });
+        });
+      } else if(value === ''){
+        return self.get('store').findAll('movie').then(function(movies) {
+          self.set('movies', []);
+          movies.map(item => {
+            if (item.get('status')) {
+              self.get('movies').pushObject(item);
+            }
           });
-        }
+        });
       }
     },
     editMovie(name, year, runtime, director, id) {
