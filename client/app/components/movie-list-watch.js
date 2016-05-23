@@ -55,11 +55,12 @@ export default Ember.Component.extend({
         });
       }
     },
-    editMovie(name, year, runtime, director, id) {
+    editMovie(name, year, runtime, director, writer, id) {
       this.set('name', name);
       this.set('year', year);
       this.set('runtime', runtime);
       this.set('director', director);
+      this.set('writer', writer);
       this.set('id', id);
       this.set('formOpen', true);
     },
@@ -74,7 +75,8 @@ export default Ember.Component.extend({
 				newMovie.set('name', self.get('name'));
 				newMovie.set('year', self.get('year'));
 				newMovie.set('runtime', self.get('runtime'));
-				newMovie.set('director', self.get('director'));
+        newMovie.set('director', self.get('director'));
+				newMovie.set('writer', self.get('writer'));
 				newMovie.save();
 			});
     },

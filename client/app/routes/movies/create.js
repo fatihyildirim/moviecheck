@@ -8,7 +8,8 @@ export default Ember.Route.extend({
 				name: data.name,
 				year: data.year,
 				runtime: data.runtime,
-				director: data.director
+				director: data.director,
+				writer: data.director
 			}).save().then(function(){
 				this.transitionTo('movies');
 			}.bind(this));

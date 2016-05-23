@@ -28,7 +28,11 @@
 		</div>
 		<div class="form-group">
 			<label for="director">Director</label>
-			{{input value=director class="form-control"}}
+			{{input value=director.name class="form-control"}}
+		</div>
+		<div class="form-group">
+			<label for="director">Writer</label>
+			{{input value=writer.name class="form-control"}}
 		</div>
 		<button class="btn primary-btn" {{ action 'saveForm' movie}}>Save</button>
 		<button class="btn danger-btn" {{ action 'cancelForm' }}>Cancel</button>
@@ -40,7 +44,7 @@
 	<p>
 		<input type="checkbox" name="status[]" checked={{movie.status}} id={{movie.id}} onclick={{action "movieCheck"}}>
 		{{#link-to 'movies.detail' movie}}{{movie.name}}{{/link-to}}
-		<i {{action "editMovie" movie.name movie.year movie.runtime movie.director movie.id}} class="fa fa-pencil-square-o" aria-hidden="true"></i>
+		<i {{action "editMovie" movie.name movie.year movie.runtime movie.director movie.writer movie.id}} class="fa fa-pencil-square-o" aria-hidden="true"></i>
 		<i class="fa fa-times" aria-hidden="true" {{action "deleteMovie" movie.id}}></i>
 	</p>
 </div>

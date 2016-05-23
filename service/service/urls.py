@@ -6,7 +6,9 @@ from movie import views as mv
 
 
 router = routers.DefaultRouter()
-router.register(r'movies', mv.MovieViewSet)
+router.register(r'movies', mv.MovieViewSet),
+router.register(r'directors', mv.DirectorViewSet)
+router.register(r'writers', mv.WriterViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
