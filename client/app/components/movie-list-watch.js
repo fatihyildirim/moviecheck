@@ -62,7 +62,7 @@ export default Ember.Component.extend({
       this.set('director', director);
       this.set('writer', writer);
       this.set('id', id);
-      this.set('formOpen', true);
+      this.set('formOpen', id);
     },
     cancelForm() {
       this.set('formOpen', false);

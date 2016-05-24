@@ -12,7 +12,7 @@
 	</div>
 </div>
 {{#each movies as |movie|}}
-{{#if formOpen}}
+{{#if (eq movie.id formOpen)}}
 	<div class="edit-form">
 		<div class="form-group">
 			<label for="name">Name</label>
