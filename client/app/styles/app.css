@@ -14,3 +14,15 @@
 .left-box, .right-box{
     min-height: 500px;
 }
+.director-select{
+    padding: 0;
+}
+.director-select a{
+    height: 32px !important;
+}
+.writer-select{
+    padding: 0;
+}
+.writer-select a{
+    height: 32px !important;
+}

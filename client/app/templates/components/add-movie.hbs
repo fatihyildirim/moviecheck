@@ -13,11 +13,23 @@
 	</div>
 	<div class="form-group">
 		<label for="director">Director</label>
-		{{input value=director class="form-control"}}
+		<!-- {{input value=director class="form-control"}} -->
+		<select class="form-control director-select" name="director">
+			<option value=""></option>
+			{{#each movies as |movie| }}
+			  <option value="{{movie.director.id}}">{{movie.director.name}}</option>
+			{{/each}}
+		</select>
 	</div>
 	<div class="form-group">
 		<label for="director">Writer</label>
-		{{input value=writer class="form-control"}}
+		<!-- {{input value=writer class="form-control"}} -->
+		<select class="form-control writer-select" name="writer">
+			<option value=""></option>
+			{{#each movies as |movie| }}
+			  <option value="{{movie.writer.id}}">{{movie.writer.name}}</option>
+			{{/each}}
+		</select>
 	</div>
 	<button class="btn primary-btn" {{ action 'save' }}>Save</button>
 </div>
