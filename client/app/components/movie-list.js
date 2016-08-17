@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   movies: [],
+  isNameAsc: true,
+  isDateAsc: true,
+  SortType: [],
   didInsertElement() {
     let self = this;
     this.get('store').findAll('movie').then(function(movies) {
@@ -14,17 +17,47 @@ export default Ember.Component.extend({
       });
     });
   },
-  ordering: [],
   actions: {
-    order(type) {
+    nameOrder() {
       let self = this;
-      if (self.get('ordering').indexOf(type) >= 0) {
-        self.get('ordering').splice(self.get('ordering').indexOf(type), 1);
-      } else {
-        self.get('ordering').push(type);
-      }
 
-      return self.get('store').query('movie', {ordering: self.get('ordering').join(",")}).then(function(movies) {
+      if (self.get('isNameAsc')) {
+				self.set('SortType', []);
+				self.get('SortType').push('name');
+				self.set('isNameAsc', false);
+			} else {
+				self.set('SortType', []);
+				self.get('SortType').push('-name');
+				self.set('isNameAsc', true);
+			}
+
+      return self.get('store').query('movie', {
+        ordering: self.get('SortType').join(",")
+      }).then(function(movies) {
+        self.set('movies', []);
+        movies.map(item => {
+          if (!item.get('status')) {
+            self.get('movies').pushObject(item);
+          }
+        });
+      });
+    },
+    dateOrder() {
+      let self = this;
+
+      if (self.get('isDateAsc')) {
+				self.set('SortType', []);
+				self.get('SortType').push('year');
+				self.set('isDateAsc', false);
+			} else {
+				self.set('SortType', []);
+				self.get('SortType').push('-year');
+				self.set('isDateAsc', true);
+			}
+
+      return self.get('store').query('movie', {
+        ordering: self.get('SortType').join(",")
+      }).then(function(movies) {
         self.set('movies', []);
         movies.map(item => {
           if (!item.get('status')) {
@@ -46,7 +79,9 @@ export default Ember.Component.extend({
             });
           });
         } else{
-          return self.get('store').query('movie', {search: value}).then(function(movies) {
+          return self.get('store').query('movie', {
+            search: value
+          }).then(function(movies) {
             self.set('movies', []);
             movies.map(item => {
               if (!item.get('status')) {
