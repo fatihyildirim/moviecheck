@@ -28,11 +28,21 @@
 		</div>
 		<div class="form-group">
 			<label for="director">Director</label>
-			{{input value=director.name class="form-control"}}
+			<select class="form-control director-select" name="director">
+				<option value="{{director.name}}">{{director.name}}</option>
+				{{#each directors as |director| }}
+					<option value="{{director.id}}">{{director.name}}</option>
+				{{/each}}
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="director">Writer</label>
-			{{input value=writer.name class="form-control"}}
+			<select class="form-control writer-select" name="writer">
+				<option value="{{writer.name}}">{{writer.name}}</option>
+				{{#each writers as |writer| }}
+					<option value="{{writer.id}}">{{writer.name}}</option>
+				{{/each}}
+			</select>
 		</div>
 		<button class="btn primary-btn" {{ action 'saveForm' movie}}>Save</button>
 		<button class="btn danger-btn" {{ action 'cancelForm' }}>Cancel</button>

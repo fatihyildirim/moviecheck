@@ -3,11 +3,32 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   movies: [],
+  directors: [],
+  writers: [],
   isNameAsc: true,
   isDateAsc: true,
   SortType: [],
   didInsertElement() {
     let self = this;
+
+    this.get('store').findAll('director').then(function(directors) {
+      self.set('directors', []);
+      directors.map(item => {
+        if (item.get('status')) {
+          self.get('directors').pushObject(item);
+        }
+      });
+    });
+
+    this.get('store').findAll('writer').then(function(writers) {
+      self.set('writers', []);
+      writers.map(item => {
+        if (item.get('status')) {
+          self.get('writers').pushObject(item);
+        }
+      });
+    });
+
     this.get('store').findAll('movie').then(function(movies) {
       self.set('movies', []);
       movies.map(item => {
