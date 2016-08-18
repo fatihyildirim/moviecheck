@@ -1,0 +1,10 @@
+<div class="container">
+  <form class="form-signin">
+    <label for="inputName" class="sr-only">Name</label>
+    {{input value=username id="inputName" class="form-control" type="text" autocomplete="off" placeholder="Username" name="username"}}
+    <label for="inputPassword" class="sr-only">Password</label>
+    {{input value=password class="form-control" id="inputPassword" type="password" autocomplete="off" placeholder="Password" name="password"}}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" {{action "login"}}>Login</button>
+  </form>
+</div> <!-- /container -->

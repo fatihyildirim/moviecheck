@@ -1,3 +1,4 @@
+{{#if isLoggedIn}}
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 bg-warning left-box">
@@ -7,6 +8,7 @@
 					<li>{{#link-to 'movies'}}Movies{{/link-to}}</li>
 					<li>{{#link-to 'watch'}}Watch{{/link-to}}</li>
 					<li>{{#link-to 'movies.create'}}Add Movies{{/link-to}}</li>
+					<li>{{#link-to 'logout'}}Logout{{/link-to}}</li>
 				</ul>
 			</div>
 		</div>
@@ -18,3 +20,6 @@
 		</div>
 	</div>
 </div>
+{{else}}
+  {{component "login-form" login="login"}}
+{{/if}}
