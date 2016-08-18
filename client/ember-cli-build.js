@@ -25,8 +25,8 @@ module.exports = function(defaults) {
 
   app.import('bower_components/select2/select2.css');
   app.import('bower_components/select2/select2.min.js');
-  
-  app.import('vendor/font-awesome-4.6.2/css/font-awesome.css');
 
+  app.import('vendor/font-awesome-4.6.2/css/font-awesome.css');
+  app.import('bower_components/js-cookie/src/js.cookie.js');
   return app.toTree();
 };
